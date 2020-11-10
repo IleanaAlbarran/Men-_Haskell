@@ -1,0 +1,82 @@
+main = do
+    putStrLn ("caso")
+    n <- getLine
+    casos n
+
+casos n = do
+    case n of
+        "a" -> condicional 
+        "b" -> condicionalDos 1
+        "c" -> condicionalTres
+        "d" -> condicionalCuatro [0,1,2,3,4,5,6,7,8,9,10]
+        "e" -> condicionalCinco
+        "z" -> print("Adios")
+        _   -> print("Opción no disponible")
+
+condicional = do
+     
+        putStrLn "¿Que posicion desea ver? "
+        pos <- getLine
+
+        print(""++show(fibonacci(read pos)))
+        main
+
+fibonacci pos =
+    if pos==0 
+        then 
+            0
+
+    else if pos==1
+        then 
+            1
+
+    else 
+        fibonacci(pos-1)+fibonacci(pos-2)
+
+
+condicionalDos n = do
+    if n <=10
+    then do
+        print (n)
+        condicionalDos(n+1)
+    else do
+        putStrLn ("")
+        main
+       
+condicionalTres = do
+    
+        putStrLn "Escribe un numero: "
+        fac <- getLine
+
+        print(""++show(factorial(read fac)))
+        main
+
+factorial fac =
+
+    if fac==1
+        then 
+            1
+
+    else 
+        fac*factorial(fac-1)  
+
+
+condicionalCuatro lista = do
+    print(lista)
+
+    if length lista == 1
+        then do 
+            print()
+            main 
+    else do
+        print()
+        condicionalCuatro(init lista)
+
+
+condicionalCinco = do
+    putStrLn("Escriba una palabra, analizaré si es un palindromo o no: ")
+    c <- getLine
+    let res = c==reverse c
+
+    print(res)
+
